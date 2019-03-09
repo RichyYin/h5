@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<script src="js/mui.min.js"></script>
+	<link href="css/mui.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="css/mod.css"/>
+	<link rel="stylesheet" type="text/css" href="css/share.css"/>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		
+		mui.ready(function () {
+			
+			//获取页面传值
+			var src = sessionStorage.getItem('src');
+			console.log(src);
+			
+			//赋值
+			mui('.background-pic')[0].src = src;
+			
+			//保存图片
+			mui('body').on('tap','#save',function(){
+				
+			})
+			
+			//分享图片
+			mui('body').on('tap','#share',function(){
+				
+				mui.openWindow({
+					extras: {
+						name: name
+					},
+					id:'share',
+					url:'share.html'
+				});
+			
+			})
+		
+		})
+		
+	</script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">妈妈的美好回忆</h1>
+	</header>
+	<div class="mui-content body-content">
+		<div class="div-pic">
+			<div class="div-name">
+				<div class="name">
+					<label>亲爱的，</label><label id="name"></label><label>:</label>
+				</div>
+				<div class="words">
+					<label style="display: block;">母亲节快乐!</label>
+				</div>
+			</div>
+			<div id="upload-pic">
+				<img class="mui-media-object" src="images/timg.jpeg">
+			</div>
+			<div id="background-pic">
+				<img class="background-pic" src="" />
+			</div>
+		</div>
+		<div class="div-button">
+			<div id="save">
+				<input type="image" src="images/save.png" />
+				<label style="display: block;">保存到相册</label>
+			</div>
+			<div id="share">
+				<input type="image" src="images/share.png" />
+				<label style="display: block;">分享到朋友圈</label>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

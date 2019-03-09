@@ -1,0 +1,91 @@
+.mui-bar-nav {
+	background-color: #FF5053;
+}
+h1.mui-title {
+	color: white;
+}
+.body-content {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+.div-pic {
+	margin-top: 20px;
+	//display: table-cell;
+	position: relative;
+	vertical-align: middle;
+	text-align: center;
+	max-width: 70%;
+	max-height: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.div-pic #upload-pic img {
+	width: 100%;
+}
+.div-pic #upload-pic {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -45%;
+	margin-left: -40%;
+	width: 80%;
+	height: 90%;
+}
+.div-pic #background-pic img {
+	width: 100%;
+}
+.div-name {
+	position: absolute;
+	margin-top: 20px;
+	vertical-align: middle;
+	text-align: center;
+	background-color: #FF5053;
+	color: #FFFFFF;
+	opacity: 0.7;
+	width: 100%;
+	padding: 2px 0px;
+}
+.div-name .name {
+	margin-left: 25px;
+	text-align: left;
+}
+.div-button {
+	margin-top: 10px;
+	vertical-align: middle;
+	text-align: center;
+	//background-color: #FF5053;
+	padding: 5px 0px;
+	//opacity: 0.3;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.div-button .border-button {
+	width: 50px;
+	height: 80px;
+}
+.div-button .border-button.selected {
+	border: solid red 2px;
+}
+.div-finish {
+	text-align: center;
+	margin-top: 10px;
+}
+#finish {
+	font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42;
+    display: inline-block;
+    padding: 8px 15%;
+    cursor: pointer;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #FF5053;
+	margin-left: auto;
+	margin-right: auto;
+}

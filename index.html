@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+		
+		mui.ready(function(){
+			
+			mui('body').on('tap', '.btn-name', function(){
+				
+				//获取用户输入
+				var name = this.parentNode.children[0].value;
+				console.log(name);
+				
+				//保存用户输入,用户页面间传值
+				sessionStorage.setItem('name', name);	
+				
+				//打开编辑页面
+				mui.openWindow({
+					extras: {
+						name: name
+					},
+					id:'mod',
+					url:'mod.html'
+				});
+				
+			})
+			
+			mui('body').on('change','#upload-btn',function(){
+				
+				//创建文件获取对象
+				var reads = new FileReader();
+				var f = document.getElementById('upload-btn').files[0];
+				
+				//读取文件对象
+				reads.readAsDataURL(f);
+				
+				//绑定加载完成事件,进行图片渲染
+				reads.onload = function(e) {
+					document.getElementById('upload').src = this.result;
+				}
+				
+			})
+			
+			//音乐开关
+			var x = document.getElementById("media");
+			var s = 0;
+			mui('body').on('tap','#audio_btn',function(){
+				
+				if (s == 1) {
+					x.pause();
+					this.classList.remove('rotate');
+					s = 0;
+				} else {
+					x.play();
+					this.classList.add('rotate');
+					s = 1;
+				}
+				
+			})
+		})
+    </script>
+</head>
+<body>
+	<!-- TODO -->
+	<!-- 
+	 1. 整合单页面
+	 2. canvas：
+		编辑图片，自适应尺寸
+		导出图片
+	 3. 自动播放音乐
+	 4. 滑动选择边框
+	 5. 保存图片
+	 6. 分享朋友圈
+	 -->
+	<header class="mui-bar mui-bar-nav">
+		<div id="audio_btn" class="">
+			<audio src="bgm/bgm.mp3" autoplay="true" loop="loop" id="media" preload="true"></audio>
+		</div>
+		<h1 class="mui-title">妈妈的美好回忆</h1>
+	</header>
+	<div class="mui-content body-content">
+		
+		<div class="div-pic">
+			<input type="file" id="upload-btn" accept="image/jpg, image/png">
+			<label for="upload-btn" class="copy-btn">+</label>
+			<span id="text">点击上传你和母亲的合照</span>
+			<img id="upload" src="images/timg.jpeg" />
+		</div>
+		<div class="div-name">
+			<input class="text-name" type="text" placeholder="输入母亲的称呼">
+			<button id="btnname" type="button" class="mui-btn btn-name">确定</button>
+		</div>
+	</div>
+	<!-- <nav id="nav" class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item mui-active" href="index.html">
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">首页</span>
+		</a>
+		<a id="mod" class="mui-tab-item" href="mod.html">
+			<span class="mui-icon mui-icon-gear"></span>
+			<span class="mui-tab-label">编辑</span>
+		</a>
+		<a class="mui-tab-item" href="review.html">
+			<span class="mui-icon mui-icon-image"></span>
+			<span class="mui-tab-label">预览</span>
+		</a>
+		<a class="mui-tab-item" href="share.html">
+			<span class="mui-icon mui-icon-email"></span>
+			<span class="mui-tab-label">分享</span>
+		</a>
+	</nav> -->
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<script src="js/mui.min.js"></script>
+	<link href="css/mui.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="css/mod.css"/>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		
+		mui.ready(function () {
+			
+			//获取页面传值
+			var name = sessionStorage.getItem('name');
+			
+			//赋值
+			mui('#name')[0].innerHTML = name;
+			
+			//绑定选择边框事件
+			mui('body').on('tap','.border-button',function(){
+				
+				//撤销所有边框的选中效果
+				var buttons = mui('.border-button');
+				for (var i = 0; i < buttons.length; i++) {
+					buttons[i].classList.remove('selected');
+				}
+				
+				//增加当前点击选中效果
+				this.classList.add('selected');
+				
+				//更改为选中图片
+				mui('.background-pic')[0].src = this.src;
+				
+				//保存用户输入,用户页面间传值
+				sessionStorage.setItem('src', this.src);
+			})
+			
+			//打开分享页面
+			mui('body').on('tap','#finish',function(){
+				
+				mui.openWindow({
+					extras: {
+						name: name
+					},
+					id:'share',
+					url:'share.html'
+				});
+			
+			})
+		
+		})
+		
+	</script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">妈妈的美好回忆</h1>
+	</header>
+	<div class="mui-content body-content">
+		<div class="div-pic">
+			<div class="div-name">
+				<div class="name">
+					<label>亲爱的，</label><label id="name"></label><label>:</label>
+				</div>
+				<div class="words">
+					<label style="display: block;">母亲节快乐!</label>
+				</div>
+			</div>
+			<div id="upload-pic">
+				<img class="mui-media-object" src="images/timg.jpeg">
+			</div>
+			<div id="background-pic">
+				<img class="background-pic" src="images/border1.jpeg" />
+			</div>
+		</div>
+		<div class="div-button">
+			<img class="border-button selected" src="images/border1.jpeg" />
+			<img class="border-button" src="images/border2.jpeg" >
+		</div>
+		<div class="div-finish">
+			<button id="finish" type="button" class="mui-btn btn-name">确定</button>
+		</div>
+	</div>
+</body>
+</html>
